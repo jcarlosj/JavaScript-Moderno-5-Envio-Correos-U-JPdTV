@@ -15,8 +15,9 @@ function escucharEventos() {
     asunto .addEventListener( 'blur', validarCampo );
     mensaje .addEventListener( 'blur', validarCampo );
 
-    // Botón Enviar
-    btnEnviar .addEventListener( 'click', enviarEmail );
+    // Botón Enviar (Cualquiera de las dos opciones es valida)
+    //btnEnviar .addEventListener( 'click', enviarEmail );      // Forma 1
+    formulario .addEventListener( 'submit', enviarEmail );      // Forma 2
 
     // Botón Reset
     btnReset .addEventListener( 'click', resetFormulario );
