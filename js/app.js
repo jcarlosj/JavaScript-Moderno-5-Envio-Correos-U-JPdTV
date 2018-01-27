@@ -3,6 +3,7 @@ const email = document .getElementById( 'email'),
       asunto = document. getElementById( 'asunto' ),
       mensaje = document .getElementById( 'mensaje' ),
       btnEnviar = document .getElementById( 'enviar' ),
+      btnReset = document .getElementById( 'resetBtn' ),
       formulario = document .getElementById( 'enviar-mail' );
 
 escucharEventos();      
@@ -16,6 +17,9 @@ function escucharEventos() {
 
     // Botón Enviar
     btnEnviar .addEventListener( 'click', enviarEmail );
+
+    // Botón Reset
+    btnReset .addEventListener( 'click', resetFormulario );
 }      
 
 // Función que inicializa la aplicación
@@ -105,4 +109,11 @@ function enviarEmail( e ) {
     }, 3000 );      // 3s (1000 = 1s)
 
     console .log( 'Correo enviado' );
+}
+
+// Function que limpia todos los campos del formulario
+function resetFormulario( e ) {
+    e .preventDefault();         // Previene la ejecución del 'action' del Formulario
+
+    formulario .reset();         // Resetea los campos del formulario
 }
