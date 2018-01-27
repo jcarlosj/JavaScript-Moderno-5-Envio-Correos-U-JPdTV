@@ -26,6 +26,11 @@ function validarCampo() {
     // Valida la longitud del contenido del campo y que no se encuentre vacío
     validarLongitud( this );        // 'this' ---> hace referencia al campo actual
 
+    // Validar unicamente campo email
+    if( this .type === 'email' ) {
+        validarEmail( this );
+    }
+
     errores = document .querySelectorAll( '.error' );      // Capturamos la cantidad de clases 'error' que existen después de validar las longitudes
     console .log( 'errores ', errores .length );
     // Valida que los campos no se encuentren vacíos
@@ -48,6 +53,21 @@ function validarLongitud( campo ) {
         campo .classList .remove( 'error' );            // Elimina una clase error al elemento
     }
     else {
+        campo .style .borderBottomColor = 'red';
+        campo .classList .add( 'error' );               // Agrega una clase error al elemento
+    }
+}
+
+// Función que valida el correo electrónico en el campo 'email'
+function validarEmail( campo ) {
+    const mensaje = campo .value;
+
+    // Valida que la cadena de texto del campo 'email' tenga una @
+    if( mensaje .indexOf( '@' ) !== -1 ) {            // Encontro el @
+        campo .style .borderBottomColor = 'green';
+        campo .classList .remove( 'error' );            // Elimina una clase error al elemento
+    }
+    else {      // No encontro el @
         campo .style .borderBottomColor = 'red';
         campo .classList .add( 'error' );               // Agrega una clase error al elemento
     }
